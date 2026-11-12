@@ -74,6 +74,16 @@ render-batch.mjs    batch renderer
 batches/demo.json   example batch
 ```
 
+## Validation and tests
+
+`render-batch.mjs` validates every plan before rendering and reports clear errors (missing `src`, `to` before `from`, items running past `duration`, malformed words). The validator lives in `validate-plan.mjs` and has unit tests:
+
+```bash
+npm test
+```
+
+CI runs the tests on Node 18, 20 and 22. Contributions are welcome: see the open issues labelled `good first issue`.
+
 ## Tips
 
 - Keep b-roll cuts around 1.5 s or shorter; keep talking-head segments short too.

@@ -11,6 +11,7 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { bundle } from "@remotion/bundler";
 import { renderMedia, selectComposition } from "@remotion/renderer";
+import { validatePlan } from "./validate-plan.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
@@ -56,6 +57,19 @@ const plans = batch.plans
   .map((p) => (typeof p === "string" ? readJson(path.resolve(base, p)) : p))
   .filter((p) => !only.length || only.includes(p.id))
   .map(walk);
+
+let invalid = 0;
+for (const p of plans) {
+  const problems = validatePlan(p);
+  if (problems.length) {
+    invalid++;
+    console.error(`Plan "${p.id ?? "?"}" has problems:\n  - ${problems.join("\n  - ")}`);
+  }
+}
+if (invalid) {
+  console.error(`${invalid} invalid plan(s). Fix them and run again.`);
+  process.exit(2);
+}
 
 const outDir = path.resolve(base, batch.output || "renders");
 fs.mkdirSync(outDir, { recursive: true });

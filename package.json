@@ -5,7 +5,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "studio": "remotion studio src/index.jsx",
+    "test": "node --test",
+    "studio":"remotion studio src/index.jsx",
     "demo-assets": "node make-demo-assets.mjs",
     "render": "node render-batch.mjs batches/demo.json"
   },
