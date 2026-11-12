@@ -1,0 +1,5 @@
+node_modules/
+renders/
+public/_batch/
+public/demo/
+*.bak-*

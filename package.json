@@ -1,0 +1,21 @@
+{
+  "name": "vertical-ad-composer",
+  "version": "0.1.0",
+  "description": "Remotion template for 9:16 short-form ads: animated captions, keyword highlight, app pop-in with sfx, b-roll cuts, and batch rendering from JSON plans.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.jsx",
+    "demo-assets": "node make-demo-assets.mjs",
+    "render": "node render-batch.mjs batches/demo.json"
+  },
+  "keywords": ["remotion", "video", "captions", "ugc", "shorts", "reels", "tiktok", "batch-render", "9:16"],
+  "dependencies": {
+    "@remotion/bundler": "^4.0.540",
+    "@remotion/cli": "^4.0.540",
+    "@remotion/renderer": "^4.0.540",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "^4.0.540"
+  }
+}
